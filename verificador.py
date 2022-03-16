@@ -7,13 +7,16 @@
 def verifica_resultado(estado):
     if verifica_vitoria(estado, 'O'):
         return 1
+    
     elif verifica_vitoria(estado, 'X'):
         return 3
 
+    # Jogo nao finalizado
     for i in range(3):
         if '_' in estado[i]:
             return 0
     
+    # Empate
     return 2
 
 

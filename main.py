@@ -25,11 +25,9 @@ def main():
         while(not verifica_resultado(estado)):
             if vez_maquina:
                 if primeira_jogada:
-                    aux = vez_max(estado)
-                    estado = aux[1]
+                    estado = vez_max(estado).estado
                 else:
-                    aux = vez_min(estado)
-                    estado = aux[1]
+                    estado = vez_min(estado).estado
             else:
                 print('Jogador [O]: ')
                 valor = 'O'
