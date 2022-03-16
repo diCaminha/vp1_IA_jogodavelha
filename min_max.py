@@ -2,7 +2,7 @@ from entity.valor_estado import ValorEstado
 from verificador import verifica_resultado
 
 
-def gera_possiveis_proximos_estados(estado_de_partida, simbolo_a_jogar):
+def __gera_possiveis_proximos_estados(estado_de_partida, simbolo_a_jogar):
   lista_valores_estados = []
   for i in range(3):
     for j in range(3):
@@ -18,7 +18,7 @@ def vez_max(estado):
   if(resultado):
     return ValorEstado(estado, resultado)
 
-  lista_valores_estados = gera_possiveis_proximos_estados(estado, 'X')
+  lista_valores_estados = __gera_possiveis_proximos_estados(estado, 'X')
   
   for i in range(len(lista_valores_estados)):
     valor_estado_resultado_min = vez_min(lista_valores_estados[i].estado)
@@ -32,7 +32,7 @@ def vez_min(estado):
   if(resultado):
     return ValorEstado(estado, resultado)
   
-  lista_valores_estados = gera_possiveis_proximos_estados(estado, 'O')
+  lista_valores_estados = __gera_possiveis_proximos_estados(estado, 'O')
 
   for i in range(len(lista_valores_estados)):
     valor_estado_resultado_max = vez_max(lista_valores_estados[i].estado)
