@@ -10,10 +10,6 @@ def main():
         estado = __cria_estado_inicial()
         while(not verifica_resultado(estado)):
             if vez_maquina:
-               # if jogada_max:
-               #     estado = vez_max(estado).estado
-               # else:
-               #     estado = vez_min(estado).estado
                estado = vez_max(estado).estado
             else:
                 print('Jogador [O]: ')
