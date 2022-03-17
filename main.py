@@ -1,43 +1,35 @@
 from min_max import vez_max, vez_min
 from verificador import verifica_resultado
 
-curr_estado = [
-    ['_', '_', '_'],
-    ['_', '_', '_'],
-    ['_', '_', '_']
-]
-
-def cria_estado_inicial():
-    return curr_estado
-
-def printa_estado(estado):
-  print('  1 2 3')
-  for i in range(3):
-      print('%d' % (i+1), *estado[i],'', sep = '|')
 
 def main():
     vez_maquina = True
     jogar = 'S'
     while(jogar == 'S'):
-        primeira_jogada = True
-        estado = cria_estado_inicial()
-        printa_estado(estado)
+        jogada_max = True
+        estado = __cria_estado_inicial()
         while(not verifica_resultado(estado)):
             if vez_maquina:
-                if primeira_jogada:
-                    estado = vez_max(estado).estado
-                else:
-                    estado = vez_min(estado).estado
+               # if jogada_max:
+               #     estado = vez_max(estado).estado
+               # else:
+               #     estado = vez_min(estado).estado
+               estado = vez_max(estado).estado
             else:
                 print('Jogador [O]: ')
                 valor = 'O'
-                linha = int(input('linha: '))
-                coluna = int(input('coluna: '))
+                linha = int(input('informe a linha (1 a 3): '))
+                coluna = int(input(f'informe que coluna da linha {linha}: '))
                 estado[linha-1][coluna-1] = valor
 
+            if vez_maquina:
+              print("Maquina jogou: ")
+            else:
+              print("Voce jogou: ")
+            __printa_estado(estado)
+
             vez_maquina = not vez_maquina
-            primeira_jogada = not primeira_jogada
-            printa_estado(estado)
+            jogada_max = not jogada_max
 
         resultado_final = verifica_resultado(estado)
         if resultado_final == 1:
@@ -48,5 +40,21 @@ def main():
             print("vitoria X")
         
         jogar = input("jogar novamente? (S) ou (N):")
+
+
+def __cria_estado_inicial():
+  curr_estado = [
+    ['_', '_', '_'],
+    ['_', '_', '_'],
+    ['_', '_', '_']]
+  
+  return curr_estado
+
+
+def __printa_estado(estado):
+  print('  1 2 3')
+  for i in range(3):
+      print('%d' % (i+1), *estado[i],'', sep = '|')
+
 
 main()
