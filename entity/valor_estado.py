@@ -1,5 +1,11 @@
 from operator import attrgetter
 
+"""
+0 - nao terminou
+1 - vitoria de O (Humano)
+2 - empate 
+3 - vitoria de X (Maquina)
+"""
 class ValorEstado:
   def __init__(self, estado, valor=0) -> None:
       self.valor = valor
