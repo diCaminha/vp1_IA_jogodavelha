@@ -13,10 +13,9 @@ def main():
                estado = vez_max(estado).estado
             else:
                 print('Jogador [O]: ')
-                valor = 'O'
                 linha = int(input('informe a linha (1 a 3): '))
                 coluna = int(input(f'informe que coluna da linha {linha}: '))
-                estado[linha-1][coluna-1] = valor
+                estado[linha-1][coluna-1] = 'O'
 
             if vez_maquina:
               print("Maquina jogou: ")
