@@ -4,12 +4,16 @@ from verificador import verifica_resultado
 
 def main():
     vez_maquina = True
-    jogar = 'S'
-    while(jogar == 'S'):
+    continuar = True
+    while(continuar):
         jogada_max = True
-        estado = __cria_estado_inicial()
+        estado = cria_estado_inicial()
         while(not verifica_resultado(estado)):
             if vez_maquina:
+               # if jogada_max:
+               #     estado = vez_max(estado).estado
+               # else:
+               #     estado = vez_min(estado).estado
                estado = vez_max(estado).estado
             else:
                 print('Jogador [O]: ')
@@ -22,7 +26,7 @@ def main():
               print("Maquina jogou: ")
             else:
               print("Voce jogou: ")
-            __printa_estado(estado)
+            printa_estado(estado)
 
             vez_maquina = not vez_maquina
             jogada_max = not jogada_max
@@ -36,6 +40,11 @@ def main():
             print("vitoria X")
         
         jogar = input("jogar novamente? (S) ou (N):")
+        if jogar == 'S':
+          continuar = True
+          vez_maquina = True
+        else:
+          continuar = False
 
 
 def __cria_estado_inicial():
