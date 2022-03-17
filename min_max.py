@@ -2,17 +2,6 @@ from entity.valor_estado import ValorEstado
 from verificador import verifica_resultado
 
 
-def __gera_possiveis_proximos_estados(estado_de_partida, simbolo_a_jogar):
-  lista_valores_estados = []
-  for i in range(3):
-    for j in range(3):
-      if(estado_de_partida[i][j]=='_'):
-        estado_possivel = [list(estado_de_partida[0]),list(estado_de_partida[1]), list(estado_de_partida[2])]
-        estado_possivel[i][j] = simbolo_a_jogar
-        lista_valores_estados.append(ValorEstado(estado_possivel, 0))
-  return lista_valores_estados
-
-
 def vez_max(estado):
   resultado = verifica_resultado(estado)
   if(resultado):
@@ -39,3 +28,14 @@ def vez_min(estado):
     lista_valores_estados[i].valor = valor_estado_resultado_max.valor
   
   return ValorEstado.min_valor_estado(lista_valores_estados)
+
+
+def __gera_possiveis_proximos_estados(estado_de_partida, simbolo_a_jogar):
+  lista_valores_estados = []
+  for i in range(3):
+    for j in range(3):
+      if(estado_de_partida[i][j]=='_'):
+        estado_possivel = [list(estado_de_partida[0]),list(estado_de_partida[1]), list(estado_de_partida[2])]
+        estado_possivel[i][j] = simbolo_a_jogar
+        lista_valores_estados.append(ValorEstado(estado_possivel, 0))
+  return lista_valores_estados
